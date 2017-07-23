@@ -24,9 +24,15 @@ namespace RobustEngine.Graphics
         /// <param name="path">Path to texture.</param>
         /// <param name="PIF">Pixel format. Default is RGBA.</param>
         public Texture2D(string path, PixelInternalFormat PIF = PixelInternalFormat.Rgba)
-        {        
-            Load(path, PIF);
+        {
+			Bitmap Bitmap = new Bitmap(path);
+            Load(Bitmap, PIF);
         }
+
+		public Texture2D(Bitmap bitmap, PixelInternalFormat PIF = PixelInternalFormat.Rgba)
+		{
+			Load(bitmap, PIF);
+		}
 
         /// <summary>
         /// Bind Texture
@@ -49,57 +55,57 @@ namespace RobustEngine.Graphics
         /// Loads Textures into OpenGL Using Bitmaps. Supports PNG and JPG.
         /// </summary>
         /// <param name="PIF">Pixel Internal Format</param>
-        /// <param name="path">Path.</param>
-        private void Load(string path, PixelInternalFormat PIF)
-        {
-            ID = GL.GenTexture(); 
+        /// <param name="path">Path.</param>     
 
-            Bind();
+		private void Load(Bitmap bitmap, PixelInternalFormat PIF)
+		{
+			ID = GL.GenTexture();
 
-            Bitmap = new Bitmap(path);
+			Bind();
 
-            if(Bitmap.Width % 2 != 0 || Bitmap.Height % 2 != 0)
-            {
-                throw new Exception("TEXTURE AINT A POWER OF TWO"); 
-            }
+			this.Bitmap = new Bitmap(bitmap);
 
-            TextureAABB = new Rectangle(0, 0, Bitmap.Width, Bitmap.Height);
-            PixelData   = new Color[TextureAABB.Width, TextureAABB.Height];
-            BitmapData  = Bitmap.LockBits(TextureAABB, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-                           
-            GL.TexImage2D
-                (
-                    TextureTarget.Texture2D,
-                    0, 
-                    PIF,
-                    TextureAABB.Width,
-                    TextureAABB.Height,                        
-                    0,
-                    GLPixelFormat.Bgra, 
-                    PixelType.UnsignedByte,
-                    BitmapData.Scan0
-                );
-                 
-            Bitmap.UnlockBits(BitmapData);
+			if (Bitmap.Width % 2 != 0 || Bitmap.Height % 2 != 0)
+			{
+				throw new Exception("TEXTURE AINT A POWER OF TWO");
+			}
 
-            for (int x = 0; x < Bitmap.Width; x++)
-            {
-                for (int y = 0; y < Bitmap.Height; y++)
-                {
-                    PixelData[x, y] = Bitmap.GetPixel(x, y);
-                }
-            }
+			TextureAABB = new Rectangle(0, 0, Bitmap.Width, Bitmap.Height);
+			PixelData = new Color[TextureAABB.Width, TextureAABB.Height];
+			BitmapData = Bitmap.LockBits(TextureAABB, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Clamp);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Clamp);
+			GL.TexImage2D
+				(
+					TextureTarget.Texture2D,
+					0,
+					PIF,
+					TextureAABB.Width,
+					TextureAABB.Height,
+					0,
+					GLPixelFormat.Bgra,
+					PixelType.UnsignedByte,
+					BitmapData.Scan0
+				);
 
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+			Bitmap.UnlockBits(BitmapData);
 
-            //TODO Mipmap + Bump map here maybe?
+			for (int x = 0; x < Bitmap.Width; x++)
+			{
+				for (int y = 0; y < Bitmap.Height; y++)
+				{
+					PixelData[x, y] = Bitmap.GetPixel(x, y);
+				}
+			}
 
-        }       
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Clamp);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Clamp);
 
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+
+			//TODO Mipmap + Bump map here maybe?
+
+		}
         //TODO opaque checking here.
 
     }

@@ -42,6 +42,7 @@ namespace RobustEngine
 
         public VideoSettings VSettings;
 
+		//test implementation of CEF webbased gui
 
 
         public int Frame;
@@ -106,10 +107,12 @@ namespace RobustEngine
             GL.Ortho(-400,400,-300,300,0,1);
 
 
-            //Context = new GraphicsContext(GraphicsMode.Default, GameScreen.WindowInfo,4,4,GraphicsContextFlags.Default);
-            //Context.MakeCurrent(GameScreen.WindowInfo);
-            //(Context as IGraphicsContextInternal).LoadAll();
-            //GL.Enable(EnableCap.Blend);
+			//Context = new GraphicsContext(GraphicsMode.Default, GameScreen.WindowInfo,4,4,GraphicsContextFlags.Default);
+			//Context.MakeCurrent(GameScreen.WindowInfo);
+			//(Context as IGraphicsContextInternal).LoadAll();
+			//GL.Enable(EnableCap.Blend);
+
+			//test of CEf
 
             RobustConsole.Write(LogLevel.Debug, "RobustEngine Init()", "Done.");
             ReadyToRun = true;

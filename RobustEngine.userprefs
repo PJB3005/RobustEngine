@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{82EA1C6F-B173-4A0D-86B0-66A90534B45D}|Default">
+  <MonoDevelop.Ide.ItemProperties.RobustEngine PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Window/WebGUI/WebGUI.cs">
+    <Files>
+      <File FileName="Window/WebGUI/WebGUI.cs" Line="17" Column="4" />
+      <File FileName="Window/RobustPopup.cs" Line="20" Column="14" />
+      <File FileName="Window/RobustSettings.cs" Line="1" Column="1" />
+      <File FileName="Window/RobustWindow.cs" Line="1" Column="1" />
+      <File FileName="packages/CefSharp.Common.57.0.0/build/CefSharp.Common.targets" Line="4" Column="174" />
+      <File FileName="App.config" Line="8" Column="1" />
+      <File FileName="RobustEngine.cs" Line="117" Column="23" />
+      <File FileName="Graphics/Sprites/Sprite.cs" Line="19" Column="21" />
+      <File FileName="Graphics/Texture2D.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
