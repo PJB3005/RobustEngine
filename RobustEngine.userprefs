@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{82EA1C6F-B173-4A0D-86B0-66A90534B45D}|Default">
+  <MonoDevelop.Ide.ItemProperties.RobustEngine PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Graphics/Vertex.cs">
+    <Files>
+      <File FileName="Graphics/IRenderable2D.cs" Line="1" Column="1" />
+      <File FileName="Audio/AudioBufferObject.cs" Line="28" Column="27" />
+      <File FileName="Audio/AudioSourceObject.cs" Line="1" Column="1" />
+      <File FileName="Audio/AudioListenerObject.cs" Line="1" Column="1" />
+      <File FileName="Audio/AudioContext.cs" Line="11" Column="1" />
+      <File FileName="Audio/Audio.cs" Line="14" Column="4" />
+      <File FileName="Graphics/BufferObject.cs" Line="128" Column="3" />
+      <File FileName="RobustStarter.cs" Line="23" Column="10" />
+      <File FileName="Graphics/Vertex.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

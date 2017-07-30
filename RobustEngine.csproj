@@ -76,7 +76,11 @@
     <Compile Include="Window\RobustPopup.cs" />
     <Compile Include="Window\RobustSettings.cs" />
     <Compile Include="Window\RobustWindow.cs" />
-    <Compile Include="Graphics\Shape\Cube.cs" />
+    <Compile Include="Audio\AudioBufferObject.cs" />
+    <Compile Include="Audio\AudioSourceObject.cs" />
+    <Compile Include="Audio\AudioListenerObject.cs" />
+    <Compile Include="Audio\AudioContext.cs" />
+    <Compile Include="Audio\Audio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
