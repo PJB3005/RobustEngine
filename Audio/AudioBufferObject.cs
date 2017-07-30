@@ -5,35 +5,41 @@ namespace RobustEngine
 {
 	public class AudioBufferObject
 	{
-		int channels;
-		int bitsPerSample;
-		int sampleRate;
-		int buffer;
-		byte[] soundData;
+		public int channels { get; set; }
+		public int bitsPerSample { get; set;}
+		public int sampleRate { get; set;}
+		public int bufferID {get; private set;}
+		public byte[] soundData;
 
 		public AudioBufferObject(byte[] soundData)
 		{
-			buffer = AL.GenBuffer();
+			bufferID = AL.GenBuffer();
 			this.soundData = soundData;
 		}
 
 		public void Clear()
 		{
+			AL.DeleteBuffer(this.bufferID);
+			this.bufferID = AL.GenBuffer();
+		}
 
+		public void Build()
+		{
+			AL.BufferData(this.bufferID, GetSoundFormat(this.channels, this.bitsPerSample), this.soundData, this.soundData.Length, this.sampleRate);
 		}
 
 		//could use ferther overides fore different audio formats
-		private ALFormat? GetSoundFormat(int channels, int bitsPerSample)
+		private ALFormat GetSoundFormat(int channels, int bitsPerSample)
 		{
-			ALFormat? format = null;
+			ALFormat format = ALFormat.Mono8;//<-------------------------this needs to be made better.
 			switch (channels)
 			{
 				case 1: if (bitsPerSample == 8) format = ALFormat.Mono8;
-					else format = ALFormat.Mono8;
+				else if (bitsPerSample == 16) format = ALFormat.Mono8;
 					break;
 
 				case 2: if (bitsPerSample == 8) format = ALFormat.Stereo8;
-					else format = ALFormat.Stereo16;
+				else if(bitsPerSample == 16) format = ALFormat.Stereo16;
 					break;
 			}
 
@@ -43,4 +49,3 @@ namespace RobustEngine
 
 	}
 }
-null

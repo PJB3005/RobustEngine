@@ -5,6 +5,7 @@ namespace RobustEngine
 {
 	public class AudioListenerObject
 	{
+		int listenerID;
 		public AudioListenerObject()
 		{
 		}
