@@ -78,6 +78,8 @@
     <Compile Include="Window\RobustWindow.cs" />
     <Compile Include="Graphics\Shape\Cube.cs" />
     <Compile Include="Graphics\TextureAtlas.cs" />
+    <Compile Include="Graphics\OBJLoader.cs" />
+    <Compile Include="Graphics\Shape\3DObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +96,7 @@
   <ItemGroup>
     <Folder Include="Audio\" />
     <Folder Include="Properties\" />
+    <Folder Include="Graphics\Model\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Devtexture_Floor.png">
