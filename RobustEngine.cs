@@ -18,16 +18,12 @@ namespace RobustEngine
 {
     public class RobustEngine
     {
-        //Render engine. Handles all rendering.      
+        //Render engine. Handles all rendering.
         public int version;
         public string GLINFO;
 
-
-
-
         //Add this to Atmos Engine.
         public delegate void OnAtmosUpdate();
-
 
         //Rendering
         public Dictionary<string, NativeWindow> Windows;
@@ -41,13 +37,10 @@ namespace RobustEngine
 
         public VideoSettings VSettings;
 
-
-
         public int Frame;
         public int FrameTime;
 
         private bool ReadyToRun;
-
 
         //Testing
         public View PlayerView;
@@ -59,7 +52,6 @@ namespace RobustEngine
 
         public RobustEngine()
         {
-
         }
 
         public void Init()
@@ -95,7 +87,6 @@ namespace RobustEngine
 
             var ImageTestFile = Path.Combine(Environment.CurrentDirectory, "Graphics", "Shaders", "ImageTest");
 
-
             //TESTING
             Texture = new Texture2D("Devtexture_Floor.png");
             PlayerView = new View(Vector2.One, 0, 10);
@@ -108,7 +99,6 @@ namespace RobustEngine
             GL.Viewport(0, 0, 800, 600);
             GL.Ortho(-400, 400, -300, 300, 0, 1);
 
-
             //Context = new GraphicsContext(GraphicsMode.Default, GameScreen.WindowInfo,4,4,GraphicsContextFlags.Default);
             //Context.MakeCurrent(GameScreen.WindowInfo);
             //(Context as IGraphicsContextInternal).LoadAll();
@@ -118,14 +108,13 @@ namespace RobustEngine
             ReadyToRun = true;
         }
 
-        #region State 
+        #region State
         public void Run()
         {
-
             RobustConsole.Write(LogLevel.Warning, "RobustEngine", "Starting Run loop...");
 
+            Timekeeper.Start();
             GameScreen.Run(60);
-
         }
 
         public void Update(object Sender, FrameEventArgs E)
@@ -140,8 +129,6 @@ namespace RobustEngine
 
         public void Render(object Sender, FrameEventArgs E)
         {
-            Timekeeper.Start();
-
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             // PlayerView.Setup(800, 800);
@@ -157,13 +144,11 @@ namespace RobustEngine
             //  GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
             GameScreen.SwapBuffers();
 
-
-
             frames++;
-            if (Timekeeper.GetElapsed().Seconds == 1)
+            if (Timekeeper.GetElapsed().Seconds >= 1)
             {
                 RobustConsole.Write(LogLevel.Debug, "RobustEngine", "Render() FPS " + frames);
-                Timekeeper.Reset();
+                Timekeeper.Start();
                 frames = 0;
             }
             // RobustConsole.Write(LogLevel.Debug, "RobustEngine", "Render() MS " + Timekeeper.GetTime().Milliseconds.ToString());
@@ -178,12 +163,10 @@ namespace RobustEngine
 
         public void setCurrentRenderTarget(RenderTarget RT)
         {
-
         }
 
         public void setScreenTarget(NativeWindow NW)
         {
-
         }
 
         #region Global Error Checking
@@ -203,6 +186,5 @@ namespace RobustEngine
             }
         }
         # endregion Global Error Checking
-
     }
 }
